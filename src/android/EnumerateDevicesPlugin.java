@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.annotation.TargetApi;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
@@ -18,7 +17,6 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.bluetooth.BluetoothDevice;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.widget.Toast;
 import android.content.IntentFilter;
 
@@ -46,8 +44,6 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
     AudioManager audioManager;
     JSONArray devicesArray;
 
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.context = cordova.getActivity().getApplicationContext();
@@ -98,8 +94,6 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
         }
     };
 
-    @TargetApi(Build.VERSION_CODES.M)
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void enumerateDevices(JSONArray args, CallbackContext callback) {
 
         this.devicesArray = new JSONArray();
@@ -109,7 +103,6 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
         callback.success(this.devicesArray);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private void getMics() {
         AudioDeviceInfo[] mics = this.audioManager.getDevices(AudioManager.GET_DEVICES_ALL);
         String label = "";
@@ -135,7 +128,6 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void getCams() {
         // Video inputs
         CameraManager camera = (CameraManager) this.activity.getSystemService(this.context.CAMERA_SERVICE);
@@ -164,7 +156,6 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private String getAudioType(AudioDeviceInfo input) {
         String deviceType = "";
 
@@ -189,7 +180,6 @@ public class EnumerateDevicesPlugin extends CordovaPlugin {
         return deviceType;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private String getVideoType(CameraCharacteristics input) {
         String deviceType = "";
         String num = "";
