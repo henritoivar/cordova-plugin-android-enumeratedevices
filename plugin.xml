@@ -27,8 +27,6 @@
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
         <source-file src="src/android/EnumerateDevicesPlugin.java" target-dir="src/cordova-plugin-android-enumeratedevices/EnumerateDevicesPlugin" />
-    	<preference name="ANDROID_SUPPORT_ANNOTATIONS_VERSION" default="27.+"/>	
-    	<framework src="com.android.support:support-annotations:$ANDROID_SUPPORT_ANNOTATIONS_VERSION"/>
     </platform>
     
 </plugin>
